@@ -1,0 +1,41 @@
+{
+  "name": "lacework",
+	"displayName": "lacework",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.55.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+        "onCommand:lacework-vulnerabiltiy.scan",
+		"onLanguage:dockerfile"
+	],
+	"main": "./src/extension.js",
+	"contributes": {
+		"commands": [{
+            "command": "lacework-vulnerabiltiy.scan",
+			"title": "Lacework Scan"
+
+		}]
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+        "@types/vscode": "^1.55.0",
+        "@types/glob": "^7.1.3",
+        "@types/mocha": "^8.0.4",
+        "@types/node": "^12.11.7",
+        "eslint": "^7.19.0",
+        "glob": "^7.1.6",
+        "mocha": "^8.2.1",
+        "typescript": "^4.1.3",
+        "vscode-test": "^1.5.0"
+    }
+
+}
