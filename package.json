@@ -1,7 +1,10 @@
 {
-  "name": "lacework",
-	"displayName": "lacework",
-	"description": "",
+	"name": "lacework",
+  	"displayName": "Lacework Vulnerabiltiy Scanner",
+	"publisher": "Lacework",
+	"description": "VS Code extenstion for lw-scanner",
+	"repository": "https://github.com/jeffthorne/lacework-vscode-extension",
+	"icon": "images/lacework_logo.png",
 	"version": "0.0.1",
 	"engines": {
 		"vscode": "^1.55.0"
