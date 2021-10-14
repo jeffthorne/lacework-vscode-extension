@@ -6,7 +6,7 @@ Note: This is an alpha release designed to solicit feedback.
 
 ## Demo 
 
-![Lacework Vuln Scan in Action](https://github.com/jeffthorne/lacework-vscode-extension/blob/master/lacework-scan.gif?raw=true)
+![Lacework Vuln Scan in Action](https://github.com/jeffthorne/lacework-vscode-extension/blob/main/lacework-scan.gif?raw=true)
 
 ## Requirements
 
