@@ -92,21 +92,28 @@ function activate(context) {
 			const documentText = document.getText();
 			let [repo, tag, imageName] = utils.getImage(documentText)
 			let lineNumber = utils.getLineNumberFromText(document, imageName)
-			initiateScanMessage =  decorate(editor, lineNumber.lineNumber, lineNumber.lineText, `Initiating Lacework scan for: ${repo}:${tag}`)
+			//console.log("LN((((((:", lineNumber)
+
+			if(lineNumber.lineNumber >= 0){
+				initiateScanMessage =  decorate(editor, lineNumber.lineNumber, lineNumber.lineText, `Initiating Lacework scan for: ${repo}:${tag}`)
+			}
 
 			const processScanRequest = async() => {
 				let localScanResult = await getLocalScanResults(`${repo} ${tag}`, (result ) => {
 
-
 					if(result.error != undefined){
-						if(result.error.indexOf("ERROR: Error while scanning image: No docker image found.") >= 0){
-							vscode.window.showErrorMessage("'Error while scanning image: No docker image found'");
+						//console.log("result.error****************************", result.error)
+						let index = result.error.indexOf("ERROR:")
+						let error = result.error.substring(index, result.error.length)
+						//console.log("INDEX:((((((", error)
+						if(index >= 0){
+							vscode.window.showErrorMessage(error);
 							outputChannel.show();
 							outputChannel.appendLine(result.error);
 						}
 					}else{
 						if(lineNumber.lineNumber >= 0){
-							initiateScanMessage.dispose()
+							initiateScanMessage ? initiateScanMessage.dispose() : ""
 							scanResultsMessage = decorate(editor, lineNumber.lineNumber, lineNumber.lineText, `Lacework results for ${repo}:${tag}: ${result.line}`)
 							setTimeout(() => {  scanResultsMessage.dispose(); }, 20000);
 						}
@@ -142,7 +149,7 @@ function activate(context) {
 
 							if(result.error != undefined){
 								errorMessage = decorate(activeEditor, lineNumber, lineText, `Error: please check output logs`)
-								setTimeout(() => {  errorMessage.dispose(); }, 7000);
+								setTimeout(() => {  errorMessage.dispose(); }, 3000);
 								outputChannel.show();
 								outputChannel.appendLine(result.error);
 							}else{
