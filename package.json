@@ -13,13 +13,13 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:lacework-vulnerabiltiy.scan",
+        "onCommand:lacework-vulnerability.scan",
 		"onLanguage:dockerfile"
 	],
 	"main": "./src/extension.js",
 	"contributes": {
 		"commands": [{
-            "command": "lacework-vulnerabiltiy.scan",
+            "command": "lacework-vulnerability.scan",
 			"title": "Lacework Scan"
 
 		}]
