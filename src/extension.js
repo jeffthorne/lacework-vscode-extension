@@ -77,7 +77,7 @@ function activate(context) {
 
 	var outputChannel = vscode.window.createOutputChannel("Lacework Scan");
 
-	let disposable = vscode.commands.registerCommand('lacework-vulnerabiltiy.scan', () => {
+	let disposable = vscode.commands.registerCommand('lacework-vulnerability.scan', () => {
 		
 		try {
 			var version = runCmd("lw-scanner version", "").toString()
