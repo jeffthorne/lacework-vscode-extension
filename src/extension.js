@@ -7,7 +7,7 @@ let scanResultsMessage = null
 
 
 const getLocalScanResults = async(imageName, returnFunction) => {
-	cp.exec(`lw-scanner evaluate ${imageName} --scan-library-packages`,  async(err, stdout, stderr) => {
+	cp.exec(`lw-scanner evaluate ${imageName} -w=false`,  async(err, stdout, stderr) => {
 
 		if (err) {
 			let line = 'Lacework Scan error: please check output logs'
